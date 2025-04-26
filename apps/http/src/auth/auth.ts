@@ -15,7 +15,25 @@ const authRouter: Router = express.Router();
 authRouter.post("/signup", async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
 
+  try {
+    const userData = await prisma.user.create({
+      data: {
+        username : username,
+        email : email,
+        password : password
   
+      }
+    })
+
+    res.json({
+      message : userData.id
+    })
+
+  } catch (error) {
+    res.json({
+      message : "something went wrong.."
+    }).status(501)
+  }
 
   
   res.json({
