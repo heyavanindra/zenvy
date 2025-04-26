@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import authRouter from "./auth/auth";
 
+
 const app = express();
 
 app.use(express.json());
