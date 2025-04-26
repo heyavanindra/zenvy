@@ -1,5 +1,6 @@
 import express, { Request, Response, Router } from "express";
-import prisma from '@repo/db/client';     
+import prisma from '@repo/db/client'; 
+import {signupSchema} from '@repo/common/common'    
 
 type arrtype = {
   username : String,
@@ -14,6 +15,8 @@ const authRouter: Router = express.Router();
 
 authRouter.post("/signup", async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
+
+  signupSchema.safeParse 
 
   try {
     const userData = await prisma.user.create({

@@ -19,4 +19,5 @@ model User {
   username String 
   email String
   password String
-}
+}   
+ //migrate //generate
